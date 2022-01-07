@@ -1,0 +1,51 @@
+local functions={};
+getgenv().Farm=true;
+functions.Teleport=function(cf)
+   game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame=CFrame.new(cf);
+end;
+
+functions.getPlot=function()
+   for _,plot in next,workspace.Plots:children()do
+       if tostring(plot.Owner.Value)==tostring(game.Players.LocalPlayer)then
+           return plot;
+       end;
+   end;
+   return false;
+end;
+
+functions.getTrees=function()
+   local plot,treeTable=functions.getPlot(),{};
+   for _,plotModel in next,plot:children()do
+       if plotModel:IsA'Model'then
+           for _,tree in next,plotModel:children()do
+               if tree:IsA'Model'and string.find(tree.Name,"Tree")and not table.find(treeTable,tree)then
+                   table.insert(treeTable,tree);
+               end;
+           end;
+       end;
+   end;
+   return treeTable
+end;
+
+functions.autoFarmTrees=function()
+   for _,tree in next,functions.getTrees()do
+       if string.find(tree.Name,"Tree")and not tree:FindFirstChild'Inner'and tree.Parent~=nil and tree:FindFirstChild'MeshPart'and getgenv().Farm then
+            local connection;
+           connection=tree.AncestryChanged:Connect(function()
+               connection:Disconnect();
+               connection=nil;
+           end);
+           functions.Teleport(tree.MeshPart.CFrame.p);
+           repeat
+               game:GetService'RunService'.Heartbeat:wait();
+               game:GetService'ReplicatedStorage'.Communication.Remotes.HitTree:FireServer(tonumber(functions.getPlot().Name),tostring(tree.Parent),tonumber(string.sub(tree.Name,6,6)));
+           until not connection;
+       end;
+   end;
+end;
+
+while getgenv().Farm do
+   game:GetService'RunService'.Heartbeat:wait();
+   functions.autoFarmTrees();
+   functions.Teleport(functions.getPlot()["0_0"].Sell.CFrame.p+Vector3.new(0,1,0));
+end;
