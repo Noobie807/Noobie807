@@ -30,7 +30,7 @@ end)
 end)
 local Tab = Window:NewTab("misc")
    local Section = Tab:NewSection("Misc")
-  Section:NewToggle("inf Ammo", "ToggleInfo", function(state)
+  Section:NewToggle("inf Ammo", "ToggleInfo", function(state) --inf Ammo
     if state then
         print("Toggle On")
         local mods = {
@@ -242,7 +242,35 @@ game:service'Players'.LocalPlayer.Idled:connect(function()
 bb:CaptureController()bb:ClickButton2(Vector2.new())
 ab.Text="Roblox tried to kick u but i kicked him instead"wait(2)ab.Text="Status : Active"
 end)
+end) 
+local Tab = Window:NewTab("Teleport player")
+  local Section = Tab:NewSection("Section Name") --section
+   players = {}
+ 
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+   table.insert(players,v.Name)
+end
+ 
+Section:NewDropdown("Select Player", " ", players, function(abc)
+    Select = abc
 end)
+  Section:NewButton("Refresh", " ", function() --Refresh
+    table.clear(players)
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+   table.insert(players,v.Name)
+end
+end)
+Section:NewToggle("Teleport", "ToggleInfo", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+_G.Team = state
+while wait() do
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Select].Character.HumanoidRootPart.CFrame
+end 
+end) 
 Section:NewKeybind("KeybindText", "KeybindInfo", Enum.KeyCode.RightControl , function()
 	Library:ToggleUI()
 end)
