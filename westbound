@@ -1,0 +1,223 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("westbount", "Synapse")
+local Tab = Window:NewTab("script")
+local Section = Tab:NewSection("main script")
+Section:NewButton("script", "wap", function()
+    loadstring(game:HttpGet(("https://raw.githubusercontent.com/Drifter0507/scripts/main/westbound"),true))()
+end)
+local Tab = Window:NewTab("Teleport")
+   local Section = Tab:NewSection("teleport")
+   Section:NewButton("Stone creek", "ButtonInfo", function()
+     tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(1, Enum.EasingStyle.Linear)
+  tween = tweenService:Create(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart, tweenInfo, {
+    CFrame = CFrame.new(899.355713, 20.6744404, 215.037491, -0.784823477, 3.95368822e-08, 0.619719386, 4.30656666e-09, 1, -5.83441278e-08, -0.619719386, -4.3120977e-08, -0.784823477)
+  })
+  tween:Play()
+end)
+   Section:NewButton("Grayidge", "ButtonInfo", function()
+     tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(1, Enum.EasingStyle.Linear)
+  tween = tweenService:Create(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart, tweenInfo, {
+    CFrame = CFrame.new(1613.30896, 121.349991, 1576.02466, -0.264962405, -2.76743659e-08, 0.96425873, -8.12137735e-09, 1, 2.64685251e-08, -0.96425873, -8.17945212e-10, -0.264962405)
+  })
+  tween:Play()
+end)
+    Section:NewButton("Tumbleweed   ", "ButtonInfo", function()
+     tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(1, Enum.EasingStyle.Linear)
+  tween = tweenService:Create(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart, tweenInfo, {
+    CFrame = CFrame.new(-270.784119, 12.3499966, -188.320755, -0.861960888, 4.11059986e-09, 0.506974757, -4.51047768e-08, 1, -8.47954453e-08, -0.506974757, -9.5957347e-08, -0.861990888)
+  })
+  tween:Play()
+end)
+local Tab = Window:NewTab("misc")
+   local Section = Tab:NewSection("Misc")
+  Section:NewToggle("inf Ammo", "ToggleInfo", function(state)
+    if state then
+        print("Toggle On")
+        local mods = {
+    Damage = 999, 
+    FanFire = true, 
+    camShakeResist = 0, 
+    Spread = 0, 
+    prepTime = 0, 
+    equipTime = 0, 
+    MaxShots = math.huge, 
+    ReloadAnimationSpeed = 0, 
+    ReloadSpeed = 0, 
+    HipFireAccuracy = 0, 
+    ZoomAccuracy = 0, 
+    InstantFireAnimation = true
+}
+
+for _, gun in pairs(require(game:GetService("ReplicatedStorage").GunScripts.GunStats)) do
+    for prop, value in pairs(mods) do
+        if gun[prop] then
+            gun[prop] = value
+        end
+    end
+end
+    else
+        print("Toggle Off")
+    end
+end)
+    Section:NewToggle("Annimal ESP", "ToggleInfo", function(state)
+    if state then
+        print("Toggle On")
+         while wait(3) do
+for i,v in pairs(game:GetService("Workspace").Animals:GetDescendants()) do
+   if v.ClassName == 'Part' and v.Name == 'HumanoidRootPart' then
+       
+       local BillboardGui = Instance.new('BillboardGui')
+       local TextLabel = Instance.new('TextLabel')
+       if not v.Parent:FindFirstChild("Animal Esp") then
+       BillboardGui.Parent = v.Parent
+       BillboardGui.AlwaysOnTop = true
+       BillboardGui.Size = UDim2.new(0, 50, 0, 50)
+       BillboardGui.StudsOffset = Vector3.new(0,2,0)
+       BillboardGui.Name = 'Animal Esp'
+
+       TextLabel.Parent = BillboardGui
+       TextLabel.BackgroundColor3 = Color3.new(1,1,1)
+       TextLabel.BackgroundTransparency = 1
+       TextLabel.Size = UDim2.new(1, 0, 1, 0)
+       TextLabel.Text = v.Parent.AnimalType.Value
+       TextLabel.TextColor3 = Color3.new(1, 0, 0)
+       TextLabel.TextScaled = false
+if v.Parent.AnimalType.Value == "Dire Wolf" then
+game.StarterGui:SetCore("SendNotification", {
+Title = "Animal Notifier";
+Text = "Dire Wolf has spawned";
+Button1 = "Okay";
+Duration = 10000;
+})
+   end
+   end
+end
+end
+end
+    else
+        print("Toggle Off")
+    end
+end)
+  Section:NewButton("No fall dmg", "ButtonInfo", function()
+   local gamemt = getrawmetatable(game)
+local oldNc = gamemt.__namecall
+setreadonly(gamemt, false)
+
+gamemt.__namecall = newcclosure(function(self, ...)
+  if (getnamecallmethod() == 'FireServer' and self.Name == 'ChangeCharacter') then
+    local args = {...}
+    if (args[1] and args[1] == 'Damage') then
+      return nil
+    end
+  end 
+   return oldNc(self, ...)
+end)
+end)
+   Section:NewButton("Aimbot", "ButtonInfo", function()
+     -- Made by Error_IDK
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Aimbot = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local Toggle = Instance.new("TextButton")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Aimbot.Name = "Aimbot"
+Aimbot.Parent = ScreenGui
+Aimbot.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Aimbot.Position = UDim2.new(0.0599842146, 0, 0.358722359, 0)
+Aimbot.Size = UDim2.new(0, 126, 0, 152)
+
+Title.Name = "Title"
+Title.Parent = Aimbot
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.Size = UDim2.new(0, 126, 0, 50)
+Title.Font = Enum.Font.SourceSans
+Title.Text = "Aimbot (Made by Error_IDK)"
+Title.TextColor3 = Color3.fromRGB(0, 0, 0)
+Title.TextSize = 13.300
+
+Toggle.Name = "Toggle"
+Toggle.Parent = Aimbot
+Toggle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Toggle.BorderSizePixel = 0
+Toggle.Position = UDim2.new(0, 0, 0.473684222, 0)
+Toggle.Size = UDim2.new(0, 126, 0, 50)
+Toggle.Font = Enum.Font.SourceSans
+Toggle.Text = "Off"
+Toggle.TextColor3 = Color3.fromRGB(255, 0, 0)
+Toggle.TextSize = 40.000
+
+-- Scripts:
+
+local function PNHLOYF_fake_script() -- Toggle.LocalScript 
+	local script = Instance.new('LocalScript', Toggle)
+
+	_G.aimbot = false
+	local camera = game.Workspace.CurrentCamera
+	local localplayer = game:GetService("Players").LocalPlayer
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		if _G.aimbot == false then
+			_G.aimbot = true
+			script.Parent.TextColor3 = Color3.fromRGB(0,170,0)
+			script.Parent.Text = "On"
+			function closestplayer()
+				local dist = math.huge -- math.huge means a really large number, 1M+.
+				local target = nil --- nil means no value
+				for i,v in pairs (game:GetService("Players"):GetPlayers()) do
+					if v ~= localplayer then
+						if v.Character and v.Character:FindFirstChild("Head") and _G.aimbot and v.Character.Humanoid.Health > 0 then --- creating the checks
+							local magnitude = (v.Character.Head.Position - localplayer.Character.Head.Position).magnitude
+							if magnitude < dist then
+								dist = magnitude
+								target = v
+							end
+							
+						end
+					end
+				end
+				return target
+			end
+			
+		else
+			_G.aimbot = false
+			script.Parent.TextColor3 = Color3.fromRGB(255,0,0)
+			script.Parent.Text = "Off"
+		end
+	end)
+	
+	local settings = {
+		keybind = Enum.UserInputType.MouseButton2
+	}
+	
+	local UIS = game:GetService("UserInputService")
+	local aiming = false --- this toggle will make it so we lock on to the person when we press our keybind
+	
+	UIS.InputBegan:Connect(function(inp)
+		if inp.UserInputType == settings.keybind then
+			aiming = true
+		end
+	end)
+	
+	UIS.InputEnded:Connect(function(inp)
+		if inp.UserInputType == settings.keybind then ---- when we stop pressing the keybind it would unlock off the player
+			aiming = false
+		end
+	end)
+	
+	game:GetService("RunService").RenderStepped:Connect(function()
+		if aiming then
+			camera.CFrame = CFrame.new(camera.CFrame.Position,closestplayer().Character.Head.Position) -- locks into the HEAD
+		end
+	end)
+end
+coroutine.wrap(PNHLOYF_fake_script)()
+(end)
