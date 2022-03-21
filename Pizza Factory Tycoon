@@ -1,0 +1,61 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Pizza Factory Tycoon", "DarkTheme")
+local Tab = Window:NewTab("Teleport")
+local Section = Tab:NewSection("Teleport")
+Section:NewButton("house", "teleport", function()   --House
+      tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(0, Enum.EasingStyle.Linear)
+  tween = tweenService:Create(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart, tweenInfo, {
+    CFrame = CFrame.new(144.249191, 2.36032844, -279.739441, -0.796589553, 4.74068926e-08, -0.6045205, -2.48386804e-08, 1, 1.1115111e-07, 0.6045205, 1.03557305e-07, -0.796589553)
+  })
+  tween:Play()
+end)
+Section:NewButton("Customer House 1", "ButtonInfo", function() --House1
+    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(0, Enum.EasingStyle.Linear)
+  tween = tweenService:Create(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart, tweenInfo, {
+    CFrame = CFrame.new(-78.886055, 2.67232633, -183.637924, 0.783118069, -7.47165956e-08, -0.621873021, 6.89895217e-08, 1, -3.32698988e-08, 0.621873021, -1.6848464e-08, 0.783118069)
+  })
+  tween:Play()
+end)
+Section:NewButton("Customer House 2", "ButtonInfo", function() --House2
+    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(0, Enum.EasingStyle.Linear)
+  tween = tweenService:Create(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart, tweenInfo, {
+    CFrame = CFrame.new(-84.7408829, 2.47632933, -118.496117, -0.285384119, -1.61390243e-08, -0.958413243, 9.29043438e-08, 1, -4.45031922e-08, 0.958413243, -1.01741257e-07, -0.285384119)
+  })
+  tween:Play()
+end)
+Section:NewButton("Customer House 3", "ButtonInfo", function() --House3
+    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(0, Enum.EasingStyle.Linear)
+  tween = tweenService:Create(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart, tweenInfo, {
+    CFrame = CFrame.new(-81.902092, 2.67232633, -51.3301926, -0.366107821, -1.39706273e-08, -0.93057245, 7.03259104e-08, 1, -4.26807105e-08, 0.93057245, -8.10690963e-08, -0.366107821)
+  })
+  tween:Play()
+end)
+Section:NewButton("Customer House 4", "ButtonInfo", function() --House4
+    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(0, Enum.EasingStyle.Linear)
+  tween = tweenService:Create(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart, tweenInfo, {
+    CFrame = CFrame.new(287.264923, 2.45234442, -25.5670834, 0.645105362, 7.34754622e-08, 0.764093637, -9.36453475e-08, 1, -1.70978378e-08, -0.764093637, -6.05239023e-08, 0.645105362)
+  })
+  tween:Play()
+end)
+Section:NewButton("Customer House 5", "ButtonInfo", function() --House5
+    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(0, Enum.EasingStyle.Linear)
+  tween = tweenService:Create(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart, tweenInfo, {
+    CFrame = CFrame.new(293.935608, 2.67232776, -101.53009, 0.408724695, -2.55726587e-08, 0.912657738, -5.74051739e-08, 1, 5.37283249e-08, -0.912657738, -7.43513695e-08, 0.408724695)
+  })
+  tween:Play()
+end)
+Section:NewButton("Customer House 6", "ButtonInfo", function() --House6
+    tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(0, Enum.EasingStyle.Linear)
+  tween = tweenService:Create(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart, tweenInfo, {
+    CFrame = CFrame.new(292.195557, 2.7097652, -155.124695, 0.934367716, 1.21516832e-08, 0.356310219, -2.29517241e-08, 1, 2.60830788e-08, -0.356310219, -3.25491207e-08, 0.934367716)
+  })
+  tween:Play()
+end)
+Section:NewKeybind("KeybindText", "KeybindInfo", Enum.KeyCode.RightControl , function()
+	Library:ToggleUI()
+end)
+local Tab = Window:NewTab("Script")
+local Section = Tab:NewSection("script")
+Section:NewButton("script", "ButtonInfo", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/iVyperion/Public-Roblox-Scripting/master/PizzaTycoon/PizzaTycoon-obfuscated.lua"))()
+end)
